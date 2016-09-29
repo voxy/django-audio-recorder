@@ -3,3 +3,5 @@ test_project/venv/*
 *.egg-info
 test_project/db.sqlite3
 .idea/*
+*.pyc
+test_project/staticfiles/*
