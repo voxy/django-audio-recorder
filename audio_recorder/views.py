@@ -2,7 +2,7 @@ from django import http
 from django.views.generic.base import View
 
 
-class CreateViewMixin(View):
+class AudioFileCreateViewMixin(View):
     model = None
 
     def post(self, request):
@@ -17,4 +17,3 @@ class CreateViewMixin(View):
             'id': result.pk,
             'url': result.audio_file.url,
         }, status=201)
-
