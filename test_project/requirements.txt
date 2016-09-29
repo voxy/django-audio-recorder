@@ -1,3 +1,6 @@
 pytest
 pytest-django
+splinter
+django-extensions
+django-bootstrap3
 -e ..

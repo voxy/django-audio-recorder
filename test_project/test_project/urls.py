@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-import audio_files
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'/', include(audio_files.urls))
+    url(r'^', include('audio_files.urls'), name='audio-files'),
 ]

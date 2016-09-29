@@ -1,6 +1,6 @@
-from __future__ import unicode_literals
-
 from django.db import models
+from audio_recorder import AudioFileMixin
 
-class AudioFile(models.Model):
-    audio_file = models.FileField()
+
+class AudioFile(AudioFileMixin, models.Model):
+    pass
