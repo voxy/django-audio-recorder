@@ -1,2 +1,5 @@
 test_project/venv/*
-test_project/.cache/*
+*/.cache/*
+*.egg-info
+test_project/db.sqlite3
+.idea/*
