@@ -1,6 +1,6 @@
 # Django Audio Recorder
 
-Create a javascript audio recorder and save the audio file using django.
+Create a javascript audio recorder and save audio files using django.
 
 ## Installation
 
@@ -40,7 +40,7 @@ class AudioFileCreateView(AudioFileCreateView):
 Register the view in your urls
 ```python
 urlpatterns = [
-    url(r'audio-files/', AudioFileCreateView.as_view(), name='audio-file-create')
+    url(r'audio-files/', AudioFileCreateView.as_view(create_field='audio_file'), name='audio-file-create')
 ]
 ```
 
@@ -57,4 +57,22 @@ class AudioFileForm(forms.ModelForm):
         }
 ```
 
+## Development
 
+Setup the environment
+```bash
+cd test_project
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run the development server
+```bash
+make serve
+```
+
+Run lint & tests
+```bash
+make lint && make tests
+```

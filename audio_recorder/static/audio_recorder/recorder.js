@@ -4,7 +4,7 @@ var recordButton = document.getElementById('js-record-button');
 var stopButton = document.getElementById('js-stop-button');
 var audio = document.getElementById('js-audio');
 var uploadSpan = document.getElementById('js-upload-span');
-var audioFile = document.getElementsByName('audio_file')[0];
+var audioFile = document.querySelectorAll('[data-django-audio-recorder]')[0];
 
 promise.then(function(stream) {
   var recorder = new MediaRecorder(stream);
@@ -34,20 +34,22 @@ promise.then(function(stream) {
     formData.append('audio_file', blob, "replace-me.wav");
     $.ajax({
         type: "POST",
-        url: $('[data-audio-file-url]').attr('data-audio-file-url'),
+        url: audioFile.dataset.url,
         data: formData,
         processData: false,
         contentType: false,
         success: function(data){
             uploadSpan.classList.add('hidden');
             recordButton.disabled = false;
-            var audioURL = window.URL.createObjectURL(blob);
-            audio.src = audioURL;
             audioFile.value = data.id;
+            audio.src = data.url;
         },
-        error: function(data){
+        error: function(jqXHR, textStatus, errorThrown){
             uploadSpan.classList.add('hidden');
             recordButton.disabled = false;
+            console.error('jqXHR:', jqXHR);
+            console.error('textStatus:', textStatus);
+            console.error('errorThrown:', errorThrown);
         },
     });
 

@@ -12,8 +12,10 @@ from .models import AudioFile
 @pytest.mark.django_db
 def test_audio_file_api_create_view(rf):
     request = rf.post('/audio-files/')
-    request.FILES['audio_file'] = SimpleUploadedFile("file.txt", "file_content")
-    response = AudioFileAPICreateView.as_view()(request)
+    request.FILES['audio_file'] = SimpleUploadedFile(
+        "file.txt", "file_content"
+    )
+    response = AudioFileAPICreateView.as_view(create_field='audio_file')(request)  # nopep8
     assert response.status_code == 201
     assert AudioFile.objects.count() == 1
 
@@ -21,7 +23,7 @@ def test_audio_file_api_create_view(rf):
 @pytest.mark.live_server
 def test_audio_file_crud_create_view(live_server):
     profile_preferences = {'media.navigator.permission.disabled': True}
-    with Browser('firefox', profile_preferences=profile_preferences) as browser:
+    with Browser('firefox', profile_preferences=profile_preferences) as browser:  # nopep8
         browser.visit(live_server.url + reverse('audio-file-crud-create'))
 
         # Wait for the js to load

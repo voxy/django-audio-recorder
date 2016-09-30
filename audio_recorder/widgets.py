@@ -4,6 +4,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 class AudioFileWidget(HiddenInput):
+
     class Media:
         js = (
             'audio_recorder/recorder.js',
@@ -18,7 +19,8 @@ class AudioFileWidget(HiddenInput):
         """Build HTML attributes for the widget."""
         attrs = super(AudioFileWidget, self).build_attrs(*args, **kwargs)
         if self.url is not None:
-            attrs['data-audio-file-url'] = reverse(self.url)
+            attrs['data-url'] = reverse(self.url)
+            attrs['data-django-audio-recorder'] = True
 
         return attrs
 
@@ -45,7 +47,7 @@ class AudioFileWidget(HiddenInput):
            '        Record'
            '    </button>'
            '    <button id="js-stop-button" '
-           '            type="button" class="btn btn-default" disabled="disabled">'
+           '            type="button" class="btn btn-default" disabled="disabled">'  # nopep8
            '        Stop'
            '    </button>'
            '</div>'
