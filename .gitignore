@@ -5,3 +5,4 @@ test_project/db.sqlite3
 .idea/*
 *.pyc
 test_project/staticfiles/*
+test_project/media/*
