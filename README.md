@@ -61,7 +61,8 @@ class AudioFileForm(forms.ModelForm):
 
 Setup the environment
 ```bash
-cd test_project
+git clone https://github.com/voxy/django-audio-recorder.git
+cd django-audio-recorder/test_project
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
