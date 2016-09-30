@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import AudioFile
-from audio_recorder import AudioFileWidget
+from audio_recorder.widgets import AudioFileWidget
 
 
 class AudioFileForm(ModelForm):

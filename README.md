@@ -23,7 +23,7 @@ INSTALLED_APPS = [
 Create your model to store the audio file using a [FileField](https://docs.djangoproject.com/en/1.10/ref/models/fields/#filefield). 
 ```python
 from django.db import models
-from audio_recorder import AudioFileMixin
+from audio_recorder.models import AudioFileMixin
 
 class AudioFile(AudioFileMixin, models.Model):
     pass
@@ -31,9 +31,9 @@ class AudioFile(AudioFileMixin, models.Model):
 
 Create an audio recorder view using the `AudioRecorderCreateViewMixin`
 ```python
-from audio_recorder import AudioFileCreateViewMixin
+from audio_recorder.views import AudioFileCreateViewMixin
 
-class AudioFileCreateView(AudioFileCreateView):
+class AudioFileCreateView(AudioFileCreateViewMixin):
     model = AudioFile
 ```
 
@@ -47,7 +47,7 @@ urlpatterns = [
 Create a form and use the `AudioFileWidget` for the audio recorder
 ```python
 from django import forms
-from audio_recorder import AudioFileWidget
+from audio_recorder.widgets import AudioFileWidget
 
 class AudioFileForm(forms.ModelForm):
     class Meta:
