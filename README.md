@@ -6,7 +6,7 @@ Create a javascript audio recorder and save audio files using django.
 
 ```
 # Install the latest version with
-pip install django-audio-recorder
+pip install git+https://github.com/voxy/django-audio-recorder.git#egg=django-audio-recorder
 ```
 
 ## Quickstart
